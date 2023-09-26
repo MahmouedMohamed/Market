@@ -5,7 +5,6 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\ProductRepository;
 use App\Http\Requests\StoreProductRequest;
-use App\Http\Resources\ProductPaginatorResource;
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use App\Traits\ApiResponse;
@@ -27,7 +26,8 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         try {
-            return $this->sendResponse(new ProductPaginatorResource($this->productRepository->index('index', $request->input('searchKey'), json_decode($request->input('filters'), true))), 'Data Retrieved Successfully');
+            return $this->sendResponse(
+                $this->productRepository->index('index', $request->input('searchKey'), json_decode($request->input('filters'), true)), 'Data Retrieved Successfully');
         } catch (Exception $ex) {
             Log::error($ex);
 
