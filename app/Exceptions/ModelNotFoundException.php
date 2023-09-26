@@ -4,8 +4,6 @@ namespace App\Exceptions;
 
 use App\Traits\ApiResponse;
 use Exception;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Request as FacadesRequest;
 
 class ModelNotFoundException extends Exception
 {
