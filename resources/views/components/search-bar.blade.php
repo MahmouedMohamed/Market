@@ -3,7 +3,7 @@
         <div class="form-group">
             <input class="form-control mr-sm-2 form-controller icon-rtl" id="search"  type="search" placeholder="Search" aria-label="Search">
         </div>
-        <div class="scrollbar panel panel-default overflow-y-scroll p-relative" style="height: fit-content; max-height: 40vh; background-color: lightslategrey; position: relative;" style="height: 30vw">
+        <div class="scrollbar panel panel-default overflow-y-scroll p-relative" style="height: fit-content; z-index: 1; max-height: 40vh; background-color: lightslategrey; position: relative;" style="height: 30vw">
             <div class="panel-body">
                 <table >
                     <tbody>
