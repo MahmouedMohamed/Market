@@ -77,12 +77,12 @@ class ProductRepository
 
     public function indexMostViewed()
     {
-        return Product::whereHas('views')->withCount('views')->orderBy('views_count', 'DESC')->take(6)->get();
+        return Product::whereHas('views')->with('images')->withCount('views')->orderBy('views_count', 'DESC')->take(6)->get();
     }
 
     public function indexLatest()
     {
-        return Product::latest()->take(6)->get();
+        return Product::latest()->with('images')->take(6)->get();
     }
 
     /**
