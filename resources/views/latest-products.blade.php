@@ -1,4 +1,8 @@
-<h1 class="dark:text-white" style=" margin: 10px"> Last Arrived Products </h1>
+<div style="display: flex;
+place-content: space-between;" class="m-2">
+    <h1 class="dark:text-white" style=" margin: 10px"> Last Arrived Products </h1>
+    {{ $latestProducts->links() }}
+</div>
 <div class="scrollbar overflow-x-auto overflow-y-hidden z-10 md-card-content container text-center">
     <div class="row align-items-center">
         <div class="col flex">
@@ -15,7 +19,6 @@
                 No Products Available
             </a>
             @endforelse
-            {{  $latestProducts->links() }}
         </div>
     </div>
 </div>
