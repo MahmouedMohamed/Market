@@ -18,4 +18,21 @@ trait Formatter
     {
         return $date->timezone(request()->headers->get('Time-Zone') ?? 'UTC')->format('Y-m-d H:m:s');
     }
+
+    public function calculatePrice(string $discountType = '#', string $discount, float $price)
+    {
+        $priceAfterDiscount = 0;
+        switch ($discountType) {
+            case '#':
+                $priceAfterDiscount = $price - $discount;
+                break;
+            case '%':
+                $priceAfterDiscount = $price - ($price * $discount / 100);
+                break;
+            default:
+                $priceAfterDiscount = $price;
+                break;
+        }
+        return max($priceAfterDiscount, 0);
+    }
 }
