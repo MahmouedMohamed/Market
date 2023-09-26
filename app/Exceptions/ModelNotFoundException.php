@@ -2,10 +2,15 @@
 
 namespace App\Exceptions;
 
+use App\Traits\ApiResponse;
 use Exception;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request as FacadesRequest;
 
 class ModelNotFoundException extends Exception
 {
+    use ApiResponse;
+
     /**
      * Render the exception as an HTTP response.
      *
@@ -14,6 +19,10 @@ class ModelNotFoundException extends Exception
      */
     public function render()
     {
-        return view(404);
+        if (request()->segment(1) === 'api') {
+            return $this->sendError('Resource Not Found');
+        } else {
+            return view(404);
+        }
     }
 }
