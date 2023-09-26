@@ -2,13 +2,22 @@
 
 namespace App\Http\Repositories;
 
+use App\Http\Services\PaginationService;
 use App\Models\Brand;
-use Illuminate\Support\Facades\Cache;
 
 class BrandRepository
 {
+    public function __construct(private $paginationService = new PaginationService())
+    {
+    }
+
     public function index()
     {
-        return Cache::remember('brands', config('app.DEFAULT_CACHE_TIME'), fn () => Brand::with('image')->take(15)->get());
+        return $this->paginationService->paginate(
+            Brand::with('image'),
+            'brandPage',
+            8,
+            15
+        );
     }
 }

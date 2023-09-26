@@ -4,9 +4,9 @@
         <div class="col flex">
             @forelse($brands as $brand)
             <div class="card m-2 " style="width: 25vw; text-align:center">
-                <img src="{{ $brand->image->path }}" class="card-img-top w-100 h-100" alt="...">
+                <img src="{{ $brand['image']['path'] ?? '' }}" class="card-img-top w-100 h-100" alt="...">
                 <div class="card-body">
-                    <p class="card-text">{{ $brand->title }}</p>
+                    <p class="card-text">{{ $brand['name'] }}</p>
                 </div>
             </div>
             @empty
@@ -15,6 +15,7 @@
                 Brands
             </a>
             @endforelse
+            {{  $brands->links() }}
         </div>
     </div>
 </div>

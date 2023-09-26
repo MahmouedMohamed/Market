@@ -2,6 +2,7 @@
 
 namespace App\Http\Repositories;
 
+use App\Http\Services\PaginationService;
 use App\Http\Services\ProductService;
 use App\Models\Brand;
 use App\Models\Category;
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Cache;
 
 class ProductRepository
 {
-    public function __construct(private $productService = new ProductService())
+    public function __construct(private $productService = new ProductService(), private $paginationService = new PaginationService())
     {
     }
 
@@ -64,25 +65,35 @@ class ProductRepository
 
     public function indexBestSelling()
     {
-        return Cache::remember('bestSelling', config('app.DEFAULT_CACHE_TIME'), function () {
-            return Product::whereHas('orderItems', function ($query) {
+        return $this->paginationService->paginate(
+            Product::whereHas('orderItems', function ($query) {
                 $query->whereHas('order', function ($orderQuery) {
                     return $orderQuery->where('status', '!=', 4);
                 });
             })->withSum('orderItems', 'quantity')->with('images')
-                ->orderBy('order_items_sum_quantity', 'DESC')
-                ->take(9)->get();
-        });
+                ->orderBy('order_items_sum_quantity', 'DESC'),
+            'bestSellingPage',
+            5,
+            9
+        );
     }
 
     public function indexMostViewed()
     {
-        return Product::whereHas('views')->with('images')->withCount('views')->orderBy('views_count', 'DESC')->take(6)->get();
+        return $this->paginationService->paginate(
+            Product::whereHas('views')
+                ->with('images')
+                ->withCount('views')
+                ->orderBy('views_count', 'DESC'),
+            'mostViewedPage',
+            6,
+            15
+        );
     }
 
     public function indexLatest()
     {
-        return Product::latest()->with('images')->take(6)->get();
+        return $this->paginationService->paginate(Product::latest()->with('images'), 'latestProductPage', 6, 15);
     }
 
     /**

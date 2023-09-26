@@ -4,9 +4,9 @@
         <div class="col flex">
             @forelse($mostViewedProducts as $product)
             <div class="card m-2 " style="width: 25vw; text-align:center">
-                <img src="{{ $product->images->first()?->path }}" class="card-img-top w-100 h-100" alt="...">
+                <img src="{{ $product['images'][0]['path'] ?? '' }}" class="card-img-top w-100 h-100" alt="...">
                 <div class="card-body">
-                    <p class="card-text">{{ $product->title }}</p>
+                    <p class="card-text">{{ $product['title'] }}</p>
                 </div>
             </div>
             @empty
@@ -15,6 +15,7 @@
                 No Products Available
             </a>
             @endforelse
+            {{  $mostViewedProducts->links() }}
         </div>
     </div>
 </div>
