@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Repositories\BrandRepository;
 use App\Http\Repositories\CategoryRepository;
 use App\Http\Repositories\ProductRepository;
+use App\Http\Resources\CategoryResource;
+use App\Http\Resources\ProductResource;
 
 class DashboardController extends Controller
 {
@@ -16,12 +18,12 @@ class DashboardController extends Controller
     public function index()
     {
         return view('dashboard', [
-            'categories' => $this->categoryRepository->index(),
+            'categories' => CategoryResource::collection($this->categoryRepository->index()),
             'promotedProducts' => $this->productRepository->index('promoted'),
-            'bestSellingProducts' => $this->productRepository->index('best-selling'),
+            'bestSellingProducts' => ProductResource::collection($this->productRepository->index('best-selling')),
             'brands' => $this->brandRepository->index(),
-            'mostViewedProducts' => $this->productRepository->index('most-viewed'),
-            'latestProducts' => $this->productRepository->index('latest'),
+            'mostViewedProducts' => ProductResource::collection($this->productRepository->index('most-viewed')),
+            'latestProducts' => ProductResource::collection($this->productRepository->index('latest')),
         ]);
     }
 }
