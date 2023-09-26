@@ -10,3 +10,10 @@
 - run "npm run dev"
 - run "php artisan serve"
 - run "php artisan test --filter=ProductControllerTest" to make sure everything is alright
+
+
+## Features
+
+- Search For Product
+- Dashboard with Listing Promoted Products, Brands, Categories, etc.
+- APIs for Saving, Listing & Filtering Products
