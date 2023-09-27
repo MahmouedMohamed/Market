@@ -2,9 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\Order;
 use App\Models\Promotion;
-use App\Observers\OrderObserver;
 use App\Observers\PromotionObserver;
 use Illuminate\Support\ServiceProvider;
 
@@ -24,7 +22,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Promotion::observe(PromotionObserver::class);
-        Order::observe(OrderObserver::class);
         //
     }
 }

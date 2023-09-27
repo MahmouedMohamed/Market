@@ -16,27 +16,11 @@ class PromotionObserver
     }
 
     /**
-     * Handle the Promotion "updated" event.
-     */
-    public function updated(Promotion $promotion): void
-    {
-        //
-    }
-
-    /**
      * Handle the Promotion "deleted" event.
      */
     public function deleted(Promotion $promotion): void
     {
         Cache::forget('promotedProducts');
-    }
-
-    /**
-     * Handle the Promotion "restored" event.
-     */
-    public function restored(Promotion $promotion): void
-    {
-        //
     }
 
     /**
