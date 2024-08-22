@@ -38,4 +38,20 @@ trait ApiResponse
 
         return response()->json($response, 403);
     }
+
+    /**
+     * Send any validation errors response
+     *
+     * @param  array  $errors
+     */
+    public function validationErrors($errors, $message = 'validation error')
+    {
+        $response = [
+            'err_flag' => true,
+            'data' => $errors,
+            'message' => $message,
+        ];
+
+        return response()->json($response, 422);
+    }
 }
