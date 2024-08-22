@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('nationalities', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('name');
             $table->text('flag')->nullable();
         });
     }
