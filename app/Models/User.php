@@ -34,4 +34,9 @@ class User extends BaseUserModel
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function type()
+    {
+        return $this->belongsTo(UserType::class, 'id', 'user_type_id');
+    }
 }
