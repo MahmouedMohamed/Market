@@ -22,8 +22,6 @@ return new class extends Migration
             $table->string('locale');
             $table->string('name');
             $table->text('description')->nullable();
-            $table->timestamps();
-            $table->timeStamp('deleted_at')->nullable();
         });
     }
 
