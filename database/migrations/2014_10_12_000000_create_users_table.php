@@ -16,13 +16,28 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('phone_number')->unique();
-            $table->string('type');
-            $table->string('sub_type')->nullable();
+            $table->string('nationality_id');
+            $table->string('type_id');
+            $table->string('sub_type_id')->nullable();
             $table->tinyInteger('status');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->timestamps();
             $table->timeStamp('deleted_at')->nullable();
+
+            $table->foreign('type_id')
+                ->references('id')
+                ->on('user_types')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->foreign('sub_type_id')
+                ->references('id')
+                ->on('user_types');
+
+            $table->foreign('nationality_id')
+                ->references('id')
+                ->on('nationalities');
         });
     }
 

@@ -13,6 +13,9 @@ class User extends BaseUserModel
         'name',
         'email',
         'password',
+        'type_id',
+        'sub_type_id',
+        'nationality_id'
     ];
 
     /**
@@ -37,6 +40,6 @@ class User extends BaseUserModel
 
     public function type()
     {
-        return $this->belongsTo(UserType::class, 'id', 'user_type_id');
+        return $this->belongsTo(UserType::class, 'id', 'type_id');
     }
 }
