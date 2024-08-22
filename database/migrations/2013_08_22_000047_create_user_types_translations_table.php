@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('user_types_translations', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->string('user_type_id');
+            $table->id();
+            $table->unsignedBigInteger('user_type_id');
             $table->foreign('user_type_id')
                 ->references('id')
                 ->on('user_types')

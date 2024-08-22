@@ -8,6 +8,10 @@ class Nationality extends BaseModel
 {
     use Translatable;
 
+    const USE_UUID = false;
+
+    public $incrementing = true;
+
     public $table = 'nationalities';
 
     public $translationModel = NationalityTranslation::class;

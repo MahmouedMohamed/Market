@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('nationality_translations', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->string('nationality_id');
+            $table->id();
+            $table->unsignedBigInteger('nationality_id');
             $table->foreign('nationality_id')
                 ->references('id')
                 ->on('nationalities')

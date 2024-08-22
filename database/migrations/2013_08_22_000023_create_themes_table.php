@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('themes', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id();
             $table->timeStamps();
             $table->timeStamp('deleted_at')->nullable();
         });

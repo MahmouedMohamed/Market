@@ -8,6 +8,10 @@ class UserType extends BaseModel
 {
     use Translatable;
 
+    const USE_UUID = false;
+
+    public $incrementing = true;
+
     public $table = 'user_types';
 
     public $translationModel = UserTypeTranslation::class;

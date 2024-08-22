@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('phone_number')->unique();
-            $table->string('nationality_id');
-            $table->string('type_id');
-            $table->string('sub_type_id')->nullable();
+            $table->unsignedBigInteger('nationality_id');
+            $table->unsignedBigInteger('type_id');
+            $table->unsignedBigInteger('sub_type_id')->nullable();
             $table->tinyInteger('status');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

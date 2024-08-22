@@ -12,13 +12,15 @@ class BaseModel extends Model
 {
     use HasFactory;
 
+    const USE_UUID = true;
+
     public $incrementing = false;
 
     protected static function booted()
     {
         parent::booted();
         static::creating(function ($query) {
-            if ($query->primaryKey) {
+            if ($query->primaryKey && static::USE_UUID) {
                 $query->id = Str::uuid();
             }
         });

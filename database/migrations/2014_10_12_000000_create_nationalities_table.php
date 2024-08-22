@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('nationalities', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id();
             $table->text('flag')->nullable();
         });
     }

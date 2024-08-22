@@ -18,7 +18,7 @@ class CreateUserSettingsTable extends Migration
             $table->primary('id');
             $table->string('user_id');
             $table->string('language')->nullable();
-            $table->string('theme_id')->nullable();
+            $table->unsignedBigInteger('theme_id')->nullable();
             $table->timestamps();
             $table->foreign('user_id')
                 ->references('id')
