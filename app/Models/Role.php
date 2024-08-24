@@ -8,8 +8,6 @@ class Role extends BaseModel
 {
     use HasFactory;
 
-    public $incrementing = false;
-
     protected $fillable = ['id', 'name', 'label'];
 
     public function abilities()

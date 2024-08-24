@@ -8,6 +8,4 @@ use Illuminate\Notifications\Notifiable;
 class BaseUserModel extends AuthenticatableUser
 {
     use HasFactory, Notifiable;
-
-    public $incrementing = false;
 }

@@ -8,8 +8,6 @@ class Ability extends BaseModel
 {
     use HasFactory;
 
-    public $incrementing = false;
-
     protected $fillable = ['id', 'name'];
 
     public function roles()

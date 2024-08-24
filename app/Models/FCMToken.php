@@ -10,8 +10,6 @@ class FCMToken extends BaseModel
 {
     use HasFactory;
 
-    public $incrementing = false;
-
     protected $fillable = [
         'id',
         'token',

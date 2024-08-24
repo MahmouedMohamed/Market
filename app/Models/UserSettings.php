@@ -4,8 +4,6 @@ namespace App\Models;
 
 class UserSettings extends BaseModel
 {
-    public $incrementing = false;
-
     protected $fillable = [
         'id',
         'language',

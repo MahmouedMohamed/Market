@@ -8,8 +8,6 @@ class Profile extends BaseModel
 {
     use HasFactory;
 
-    public $incrementing = false;
-
     /**
      * The attributes that are mass assignable.
      *
