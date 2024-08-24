@@ -37,6 +37,16 @@ class RegisterRequest extends BaseRequest
             'type_id' => ['required', 'exists:user_types,id'],
             'sub_type_id' => ['nullable', 'exists:user_sub_types,id'],
             'theme_id' => ['nullable', 'exists:themes,id'],
+            // Seller Fields
+            'shop_name' => 'required_if:type_id,3',
+            'shop_address' => 'required_if:type_id,3',
+            // Student Fields
+            'university' => Rule::requiredIf(function () {
+                return $this->input('type_id') == 2 && $this->input('sub_type_id') == 1;
+            }),
+            'student_number' => Rule::requiredIf(function () {
+                return $this->input('type_id') == 2 && $this->input('sub_type_id') == 1;
+            }),
         ];
     }
 }

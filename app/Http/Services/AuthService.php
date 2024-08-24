@@ -29,7 +29,22 @@ class AuthService
             'type_id' => $registerRequest->input('type_id'),
             'sub_type_id' => $registerRequest->input('sub_type_id'),
             'status' => 1,
+            'gender' => $registerRequest->input('gender')
         ]);
+        if ($registerRequest->type_id == 3) {
+            $user->sellerCustomFields()->create([
+                'shop_name' => $registerRequest->input('shop_name'),
+                'shop_address' => $registerRequest->input('shop_address'),
+                'shop_latitude' => $registerRequest->input('shop_latitude'),
+                'shop_longitude' => $registerRequest->input('shop_longitude'),
+            ]);
+        }
+        if ($registerRequest->type_id == 2 && $registerRequest->sub_type_id == 1) {
+            $user->studentCustomFields()->create([
+                'university' => $registerRequest->input('university'),
+                'student_number' => $registerRequest->input('student_number'),
+            ]);
+        }
         $profile = $user->profile()->create([]);
         $user->settings()->create([
             'language' => app()->getLocale(),

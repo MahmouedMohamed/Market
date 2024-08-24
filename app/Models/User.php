@@ -93,7 +93,7 @@ class User extends BaseUserModel
 
     public function sellerCustomFields()
     {
-        if ($this->type == 'Seller') {
+        if ($this->type_id == 3) {
             return $this->hasOne(SellerCustomFields::class, 'user_id', 'id');
         }
         return null;
@@ -101,7 +101,7 @@ class User extends BaseUserModel
 
     public function studentCustomFields()
     {
-        if ($this->type == 'Student') {
+        if ($this->type_id == 2 && $this->sub_type_id = 1) {
             return $this->hasOne(StudentCustomFields::class, 'user_id', 'id');
         }
         return null;
