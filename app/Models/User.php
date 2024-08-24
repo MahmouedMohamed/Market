@@ -98,6 +98,14 @@ class User extends BaseUserModel
         return null;
     }
 
+    public function studentCustomFields()
+    {
+        if ($this->type == 'Student') {
+            return $this->hasOne(StudentCustomFields::class, 'user_id', 'id');
+        }
+        return null;
+    }
+
     public function createAccessToken($accessType)
     {
         $this->deleteRelatedAccessTokens($accessType);
