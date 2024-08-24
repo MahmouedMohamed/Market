@@ -90,6 +90,14 @@ class User extends BaseUserModel
         return $this->hasMany(OauthAccessToken::class, 'owner_id');
     }
 
+    public function sellerCustomFields()
+    {
+        if ($this->type == 'Seller') {
+            return $this->hasOne(SellerCustomFields::class, 'user_id', 'id');
+        }
+        return null;
+    }
+
     public function createAccessToken($accessType)
     {
         $this->deleteRelatedAccessTokens($accessType);
