@@ -8,6 +8,8 @@ class StudentCustomFields extends BaseModel
 
     public $incrementing = true;
 
+    public $timestamps = false;
+
     protected $fillable = [
         'id',
         'university',

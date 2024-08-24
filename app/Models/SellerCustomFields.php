@@ -8,6 +8,8 @@ class SellerCustomFields extends BaseModel
 
     public $incrementing = true;
 
+    public $timestamps = false;
+
     protected $fillable = [
         'id',
         'shop_name',
