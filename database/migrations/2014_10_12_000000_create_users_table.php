@@ -20,6 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('type_id');
             $table->unsignedBigInteger('sub_type_id')->nullable();
             $table->tinyInteger('status');
+            $table->tinyInteger('gender');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->timestamps();

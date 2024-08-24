@@ -22,7 +22,8 @@ class User extends BaseUserModel
         'type_id',
         'sub_type_id',
         'nationality_id',
-        'status'
+        'status',
+        'gender'
     ];
 
     /**
