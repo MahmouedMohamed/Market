@@ -17,7 +17,6 @@ class CreateAccessTokensTable extends Migration
             $table->uuid('id');
             $table->primary('id');
             $table->string('user_id');
-            $table->string('app_type');
             $table->string('access_type');
             $table->boolean('active')->default(1);
             $table->date('expires_at')->nullable();

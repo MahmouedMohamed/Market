@@ -15,9 +15,7 @@ class OauthAccessToken extends BaseModel
      */
     protected $fillable = [
         'id',
-        'owner_id',
-        'owner_type',
-        'app_type',
+        'user_id',
         'access_type',
         'active',
         'expires_at',
@@ -38,7 +36,7 @@ class OauthAccessToken extends BaseModel
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'owner_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function refreshToken($accessType, $appType)

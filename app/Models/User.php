@@ -88,7 +88,7 @@ class User extends BaseUserModel
 
     public function accessTokens()
     {
-        return $this->hasMany(OauthAccessToken::class, 'owner_id');
+        return $this->hasMany(OauthAccessToken::class, 'user_id');
     }
 
     public function sellerCustomFields()
