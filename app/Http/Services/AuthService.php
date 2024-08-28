@@ -15,6 +15,28 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthService
 {
+    public function login(LoginRequest $request)
+    {
+        try {
+            if (Auth::attempt(['email' => $request['email'], 'password' => $request['password']])) {
+                /** @var User $user  */
+                $user = Auth::user();
+                $tokenDetails = $user->createAccessToken($request['accessType']);
+
+                return [
+                    'token' => $tokenDetails['accessToken'],
+                    'expiryDate' => $tokenDetails['expiryDate'],
+                    'user' => new UserResource($user, $user->type_id),
+                    'profile' => ProfileResource::make($user->profile),
+                ];
+            } else {
+                throw new LoginFailedException();
+            }
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
+
     public function register(RegisterRequest $registerRequest)
     {
         DB::beginTransaction();
